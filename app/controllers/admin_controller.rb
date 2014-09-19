@@ -1,4 +1,4 @@
-#Git test
+
 
 
 class AdminController < ApplicationController
