@@ -1,5 +1,6 @@
 
 class AdminController < ApplicationController
+  
   http_basic_authenticate_with :name => "octa", :password => "111"
   
   def new
