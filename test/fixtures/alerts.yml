@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  data: MyString
+  dev: MyString
+  worktype: MyString
+  desc: MyString
+  name: MyString
+  sygn: MyString
+
+two:
+  data: MyString
+  dev: MyString
+  worktype: MyString
+  desc: MyString
+  name: MyString
+  sygn: MyString

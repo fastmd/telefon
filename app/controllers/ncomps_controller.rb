@@ -1,0 +1,2 @@
+class NcompsController < ApplicationController
+end

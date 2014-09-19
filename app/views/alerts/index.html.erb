@@ -1,0 +1,103 @@
+
+  
+<script>
+
+ $(document).ready(
+	function() {
+	    $('#mytable tbody').delegate("tr", "click", rowClick);
+		$(document).ready(function() 
+		{
+		
+     	
+		var oTable1 =	$('#table1').dataTable({
+									"aoColumns": [
+            { "asSortable": true},
+            { "asSortable": true},
+			{ "asSortable": true},
+            { "asSortable": true  },
+            { "asSortable": true  },
+            { "asSorting": false },
+            { "asSorting": false },],
+									"aoColumnDefs": [
+            
+        ],
+									"bStateSave": true,
+									"bPaginate": true,
+									"bLengthChange": true,
+									
+								
+									"bInfo": true,
+									"bAutoWidth": true,
+									"sPaginationType": "full_numbers",
+									"bJQueryUI": true
+									} );
+					
+		});  
+		} );  
+ 		
+
+
+	var hlr = 0;   // Reference to the currently highlighted row
+
+function rowClick()
+{
+   if (hlr)
+      $("td:first", hlr).parent().children().each(function(){$(this).removeClass('markrow');});
+   hlr = this;
+   $("td:first", this).parent().children().each(function(){$(this).addClass('markrow');});
+
+   // You can pull the values out of the row here if required
+   var a = $("td:first", this).text();
+   var b = $("td:eq(1)", this).text();
+   alert("One = "+a+", Two = "+b);
+}
+			
+</script>
+
+
+ 
+
+<div>
+<p><%= button_to "Add alert", new_alert_path, method: :get %></p>
+	<div>
+		<a>Filters : System type</a> 
+		<%= select_tag :fio_diag, options_for_select([["All","All"],["SCADA","SCADA"],["MMS","MMS"],["Локальная сеть","Локальная сеть"]]) %>
+	</div>	
+</div>
+
+<div>
+<br>
+<table id="table1">
+	<thead>
+  <tr>
+  	<th>№ </th>
+    <th> Data</th>
+    <th> System</th>
+    <th> Device</th>
+    <th> Description</th>
+    <th> Viewer Name</th>
+    <th> Worker Name</th>
+    
+  </tr>
+ </thead>
+ 
+ <tbody>
+ <%i = 0%>
+  <% @alert.each do |fc| %>
+    <tr>
+    	<%i = i + 1%>
+      <td><%= i%></td>	
+      <td><%= fc.data %></td>
+      <td><%= fc.system %></td>
+      <td><%= fc.dev %></td>
+      <td><%= fc.desc %></td>
+      <td><%= fc.fio_diag %></td>
+      <td><%= fc.name %></td>
+<!--      <td><%= link_to 'Destroy', alert_path(fc),
+                    method: :delete, data: { confirm: 'Are you sure?' } %></td>  -->
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+</div>

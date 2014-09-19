@@ -1,0 +1,2 @@
+module NcompsHelper
+end

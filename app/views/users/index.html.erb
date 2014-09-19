@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="small-9 large-centered columns">
+
+<h1>Список зарегестрированных пользователей</h1>
+ 
+<table>
+  <tr>
+    <th>Имя</th>
+    <th>Электронная почта</th>
+    <th>Номер мобильного телефона</th>
+  </tr>
+ 
+  <% @users.each do |usr| %>
+    <tr>
+      <td><%= usr.name %></td>
+      <td><%= usr.email %></td>
+      <td><%= usr.mobnum %></td>
+      <td><%= link_to 'Show', users_path(usr) %></td>
+      <td><%= link_to 'Destroy', users_path(usr),
+                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+	</div>
+	</div>

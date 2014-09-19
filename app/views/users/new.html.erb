@@ -1,0 +1,53 @@
+
+
+
+
+<div class="medium-6 large-centered columns">
+	
+<div class = "panel">
+	<h1>Регистрация:</h1>
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <p>
+    <%= f.label :"Электронная почта :" %><br />
+    <%= f.email_field :email %>
+  </p>
+  
+  <p>
+    <%= f.label :"Пароль :" %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :"Потверждение пароля :" %><br />
+    <%= f.password_field :password_confirmation %>
+  </p>
+  
+  <p>
+    <%= f.label :"Имя :" %><br />
+    <%= f.text_field :name %>
+  </p>
+  
+  <p>
+    <%= f.label :"Фамилия :" %><br />
+    <%= f.text_field :surname %>
+  </p>
+  
+  <p>
+    <%= f.label :"Ноиер мобильного телефона :" %><br />
+    <%= f.text_field :mobnum %>
+  </p>
+  
+  <%= f.submit "Создать пользователя" %>
+<% end %>
+</div>
+</div>

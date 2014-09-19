@@ -1,0 +1,55 @@
+
+
+
+<script>
+	  
+		$.ajax({
+    success:function(){
+        //your stuff
+       $("#modelname").datepicker({ dateFormat: "dd.mm.yy" });
+     }
+ });
+  
+			
+</script>
+
+<div class="row">
+  <div class="small-6 large-centered columns">
+  	<h3><%= link_to "Back to Phones List", companys_path  %></h3>
+  	<div class="panel callout radius">
+
+<%= form_for @co, url: companys_path do |f| %>
+
+<% if @co.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@co.errors.count, "error") %> prohibited
+      this Fitness Centre from being saved:</h2>
+    <ul>
+    <% @co.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div> 
+  <% end %>
+  	
+	 <p>
+	
+	
+  	<p>
+    	<%= f.label :"Новая компания" %><br>
+    	<%= f.text_field :name %>
+  	</p>
+
+  
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+  
+<% end %>
+
+  	</div>
+  </div>
+</div>
+
+</body> 

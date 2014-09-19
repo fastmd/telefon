@@ -1,0 +1,149 @@
+
+
+<script>
+	  
+		$.ajax({
+    success:function(){
+        //your stuff
+       $("#modelname").datepicker({ dateFormat: "dd.mm.yy" });
+     }
+ });
+  
+			
+</script>
+
+<div class="row">
+  <div class="small-6 large-centered columns">
+  	<h3><%= link_to "Back to Phones List", admins_path  %></h3>
+  	<div class="panel callout radius">
+
+
+<div class="panel callout radius">
+<%= form_for @tele, :url => { :action => :update, :id => @tele.id },
+:method => :put do |f| %>
+
+<% if @tele.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@tele.errors.count, "error") %> prohibited
+      this Profile from being saved:</h2>
+    <ul>
+    <% @tele.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div> 
+  <% end %>
+  	
+	
+	<p>
+    	<%= f.label :"Întreprinderea" %><br>
+    	<%= f.select :company, options_for_select([['IS MOLDELECTRICA','IS MOLDELECTRICA'],["RETI NORD-VEST","RETI NORD-VEST"],
+    	["RETI NORD","RETI NORD"],["RETI CENTRU","RETI CENTRU"],["RETI ","RETI NORD"]]) %>
+  	</p>
+	
+  	<p>
+    	<%= f.label :"Serviciul" %><br>
+    	<%= f.text_field :service %>
+  	</p>
+  	
+  	<p>
+    	<%= f.label :"Secţia" %><br>
+    	<%= f.text_field :otdel %>
+  	</p>
+  	
+  	<p>
+    	<%= f.label :"Funcţia" %><br>
+    	<%= f.text_field :dolj %>
+  	</p>
+  	<p>
+	    <%= f.label :"Prenumele" %><br>
+    	<%= f.text_field :sname %>
+  	</p>
+  
+  	<p>
+    	<%= f.label :"Numele" %><br>
+    	<%= f.text_field :name %>
+    	
+  	</p>
+  	
+  	<p>
+    	<%= f.label :"Patronimicul" %><br>
+    	<%= f.text_field :fname %>
+    	
+  	</p>
+  
+  	<p>
+    	<%= f.label :"Tel. intern" %><br>
+    	<%= f.text_field :rtel %>
+  	</p>
+  	
+  	<p>
+    	<%= f.label :"Tel. la domiciliu" %><br>
+    	<%= f.text_field :ltel %>
+  	</p>
+  	
+  	<p>
+    	<%= f.label :"Tel. mobil" %><br>
+    	<%= f.text_field :mtel %>
+  	</p>
+	
+	<p>
+    	<%= f.label :"E-mail" %><br>
+    	<%= f.text_field :email %>
+  	</p>
+	
+ 	</p>
+	
+	  <p>
+	    <%= f.submit %>
+  	 </p>
+  
+		<% end %>
+	</div>	
+ 	<div class="panel callout radius">
+ 	<p>Numere aditionale</p>
+		<table style="width:100%">
+  				<tr>
+    				<td>Numar</td>
+    				<td>Detalii</td>
+    				<td>Actiune</td>
+  				</tr>
+  				
+				<% @tele.numbers.each do |number| %>
+				<tr>
+    				<td><%= number.tel %></td>
+    				<td><%= number.text %></td>
+    				<td>
+  							<%= link_to 'Destroy', [number.telephone, number],
+               					method: :delete,
+               					data: { confirm: 'Are you sure?' } %>
+					</td>	
+  				</tr>
+  				<% end %>
+			</table> 	
+  	<br>
+  	
+		<h3> Adauga numar aditional </h3>
+		<%= form_for([@tele, @tele.numbers.build]) do |ff| %>
+  		<p>
+    		<%= ff.label :tel %><br>
+    		<%= ff.text_field :tel %>
+  		</p>
+  		<p>
+    		<%= ff.label :text %><br>
+    		<%= ff.text_area :text %>
+  		</p>
+  		
+  		<p>
+    	<%= ff.submit %>
+        </p>
+		<% end %>
+     </div>
+  
+  
+
+  	</div>
+  </div>
+</div>
+
+</body>  

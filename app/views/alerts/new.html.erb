@@ -1,0 +1,89 @@
+
+
+
+<script>
+	  
+		$.ajax({
+    success:function(){
+        //your stuff
+       $("#modelname").datepicker({ dateFormat: "dd.mm.yy" });
+     }
+ });
+  
+			
+</script>
+
+<div class="row">
+  <div class="small-6 large-centered columns">
+  	<h3><%= link_to "Back to Alert List" , alerts_path  %></h3>
+  	<div class="panel callout radius">
+
+<%= form_for @alert, url: alerts_path do |f| %>
+
+<% if @alert.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@alert.errors.count, "error") %> prohibited
+      this Fitness Centre from being saved:</h2>
+    <ul>
+    <% @alert.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div> 
+  <% end %>
+<% if current_user %>  	
+	 <p>
+	<%= f.label :"Дата регистрации события" %>
+    	
+		
+		<%= f.text_field :data,:value => Time.now.strftime('%d.%m.%Y'),:id => "modelname" %>
+
+
+    	
+	</p>
+	<p>
+    	<%= f.label :"Наименование Комплекса" %><br>
+    	<%= f.select :system, options_for_select([["SCADA","SCADA"],["MMS","MMS"],["Локальная сеть","Локальная сеть"]]) %>
+  	</p>
+	
+  	<p>
+    	<%= f.label :"Наименование устройства" %><br>
+    	<%= f.text_field :dev %>
+  	</p>
+  	<p>
+    	<%= f.label :"Тип проведенных работ" %><br>
+    	<%= f.select :worktype, options_for_select([["Замена"],["Ремонт"],["Чистка"],["Восстановление"],["Обслуживание"],["Реконфигурирование"],["Отключение"]]) %>
+  	</p>
+  	<p>
+	    <%= f.label :"Описание работ" %><br>
+    	<%= f.text_area :desc ,:cols => "30", :rows => "10"%>
+  	</p>
+  
+  	<p>
+    	<%= f.label :"ФИО обнаружившего событие" %><br>
+    	<%= f.select :fio_diag, options_for_select([["Чобырка О.","Чобырка О."],["Демченко П.","Демченко П."],["Склярук И.","Склярук И."],["Сушков В.","Сушков В."],["Черный С.","Черный С."],
+    	["Цаковский С.","Цаковский С."],["Димовчи М.","Димовчи М."],["Чикала М.","Чикала М."],["Коваль Ю.","Коваль Ю."]]) %>
+    	
+  	</p>
+  
+  	<p>
+    	<%= f.label :"ФИО Производителя работ" %><br>
+    	<%= f.select :name, options_for_select([["Чобырка О.","Чобырка О."],["Демченко П.","Демченко П."],["Склярук И.","Склярук И."],["Сушков В.","Сушков В."],["Черный С.","Черный С."],
+    	["Цаковский С.","Цаковский С."],["Димовчи М.","Димовчи М."],["Чикала М.","Чикала М."],["Коваль Ю.","Коваль Ю."]]) %>
+  	</p>
+
+ 	</p>
+  
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+  <% end %>
+<% end %>
+
+  	</div>
+  </div>
+</div>
+
+</body>  
+  

@@ -1,0 +1,96 @@
+
+<div class="row">
+  <div class="small-6 large-centered columns">
+  	<h3><%= link_to "Back to Phones List", admins_path  %></h3>
+  	<div class="panel callout radius">
+
+<%= form_for @tele, url: telephones_path do |f| %>
+
+<% if @tele.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@tele.errors.count, "error") %> prohibited
+      this Fitness Centre from being saved:</h2>
+    <ul>
+    <% @tele.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div> 
+  <% end %>
+  	
+	 <p>		
+    	<%= f.label :"Întreprinderea" %>	
+    	<%= @tele.company  %>
+  	</p>
+	
+  	<p>	
+    	<%= f.label :"Serviciul" %>
+    	<%= @tele.service %>
+  	</p>
+  	
+  	<p>
+    	<%= f.label :"Secţia" %>
+    	<%= @tele.otdel %>
+  	</p>
+  	
+  	<p>
+    	<%= f.label :"Funcţia" %>
+    	<%= @tele.dolj %>
+  	</p>
+  	<p>
+	    <%= f.label :"Prenumele" %>
+    	<%= @tele.sname %>
+  	</p>
+  
+  	<p>
+    	<%= f.label :"Numele" %>
+    	<%= @tele.name %>
+    	
+  	</p>
+  	
+  	<p>
+    	<%= f.label :"Patronimicul" %>
+    	<%= @tele.fname %>
+    	
+  	</p>
+  
+  	<p>
+    	<%= f.label :"Tel. intern" %>
+    	<%= @tele.rtel %>
+  	</p>
+  	
+  	<p>
+    	<%= f.label :"Tel. la domiciliu" %>
+    	<%= @tele.ltel %>
+  	</p>
+  	
+  	<p>
+    	<%= f.label :"Tel. mobil" %>
+    	<%= @tele.mtel %>
+  	</p>
+  	
+  	<p>
+    	<%= f.label :"E-mail" %>
+    	<%= @tele.email %>
+  	</p>
+  	
+  	
+		<p>Telefoane aditionale</p>
+  		<p>
+    		<table style="width:100%">
+  				<tr>
+    				<td>Tel</td>
+    				<td>Detalii</td>
+  				</tr>
+  				<% @tele.numbers.each do |number| %>
+  				<tr>
+    				<td><%= number.tel %></td>
+    				<td><%= number.text %></td
+  				</tr>
+  				<% end %>
+			</table> 
+  		</p>
+	
+<% end %>
+
+ 	

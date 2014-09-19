@@ -1,0 +1,116 @@
+<%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  
+<script>
+
+ $(document).ready(
+	function() {
+	    $('#mytable tbody').delegate("tr", "click", rowClick);
+		$(document).ready(function() 
+		{
+		
+     	
+		var oTable1 =	$('#table1').dataTable({
+			
+			
+									"aoColumns": [
+            { "asSortable": true},
+            { "asSortable": true},
+			{ "asSortable": true},
+            { "asSortable": true },
+            { "asSortable": true },
+            { "asSortable": true },
+            { "asSorting": false },
+            { "asSorting": false },
+            { "asSorting": false },
+            { "asSorting": false },
+            { "asSorting": false },],
+									"aoColumnDefs": [
+            
+        ],
+									"bStateSave": true,
+									"bPaginate": true,
+									"bLengthChange": true,
+									
+								
+									"bInfo": true,
+									"bAutoWidth": true,
+									"sPaginationType": "full_numbers",
+									"bJQueryUI": true
+									} );
+					
+		});  
+		} );  
+		
+		
+		   		
+
+
+	var hlr = 0;   // Reference to the currently highlighted row
+
+function rowClick()
+{
+   if (hlr)
+      $("td:first", hlr).parent().children().each(function(){$(this).removeClass('markrow');});
+   hlr = this;
+   $("td:first", this).parent().children().each(function(){$(this).addClass('markrow');});
+
+   // You can pull the values out of the row here if required
+   var a = $("td:first", this).text();
+   var b = $("td:eq(1)", this).text();
+   alert("One = "+a+", Two = "+b);
+}
+			
+</script>
+
+
+ 
+
+<div>
+
+</div>
+
+<div>
+<br>
+<table id="table1">
+	<thead>
+  <tr>
+  	<th>№ </th>
+  	<th> Prenumele</th>
+  	<th> Numele </th>
+  	<th> Patronimicul</th>
+  	<th> Tel. intern</th>
+  	<th> Tel. mobil </th>
+  	<th> Funcţia</th>
+  	<th> Serviciul</th>
+    <th> Secţia</th>
+    <th> Întreprinderea</th>
+    <th> Detalii</th>
+  </tr>
+ </thead>
+ 
+ <tbody>
+ <%i = 0%>
+  <% @tele.each do |fc| %>
+    <tr>
+    	<%i = i + 1%>
+      <td><%= i%></td>
+      <td><%= fc.sname %></td>
+      <td><%= fc.name %></td>
+      <td><%= fc.fname %></td>
+      <td><%= fc.rtel %></td>
+      <td><%= fc.mtel %></td>
+      <td><%= fc.dolj %></td>	
+      <td><%= fc.service %></td>
+      <td><%= fc.otdel %></td>
+      <td><%= fc.company %></td>
+      <td><%= link_to "Detalii", telephone_path(fc) %></td>
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+</div>

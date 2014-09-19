@@ -1,0 +1,50 @@
+<html lang="en">
+
+<br>
+<br>
+<br>
+<br>
+<br>
+    <% if !current_user %>
+<center><%= link_to telephones_path do %>
+    	<%=image_tag "spr.jpg", :size => "350x250"%>
+    	<% end %>
+    <% else %>	
+        <center><%= link_to telephones_path do %>
+    	<%=image_tag "spr.jpg", :size => "350x250"%>
+    	<% end %>
+    <% end %>
+    <h3>Cartea de telefoane IS "MOLDELECTRICA"</h3>				    
+    			
+    </center>
+    
+<!DOCTYPE html>
+
+
+
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>	
+    	
+    	<%= content_for?(:title) ? yield(:title) : "Cartea de telefoane" %>
+    </title>
+
+    
+  </head>
+
+  <body>
+
+	
+
+
+
+    
+    
+
+  </body>
+  
+  
+</html>
