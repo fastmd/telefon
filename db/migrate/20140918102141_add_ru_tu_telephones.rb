@@ -8,5 +8,6 @@ class AddRuTuTelephones < ActiveRecord::Migration
     add_column :telephones, :serviceru, :string
     add_column :telephones, :otdelru, :string
     add_column :telephones, :doljru, :string
+    
   end
 end
